@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" media="print" href="css/print.css">
+    <title>Math Quiz</title>
+  </head>
+  <body class="mdc-typography">
+
+    <div id="control-grid" class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell">
+
+          <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+            <input type="number" id="input-text-max" value="100" class="mdc-text-field__input">
+            <label class="mdc-floating-label" for="max-text-field">Max</label>
+            <div class="mdc-line-ripple"></div>
+          </div>
+    
+          <div class="mdc-form-field" data-mdc-auto-init="MDCFormField">
+            <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
+              <input type="checkbox" checked="true"
+                    class="mdc-checkbox__native-control"
+                    id="checkbox-plus"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark"
+                    viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+            <label for="checkbox-plus">Plus</label>
+      
+            <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
+              <input type="checkbox" checked="true"
+                    class="mdc-checkbox__native-control"
+                    id="checkbox-minus"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark"
+                    viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+              <div class="mdc-checkbox__ripple"></div>
+            </div>
+            <label for="checkbox-minus">Minus</label>
+          </div>
+    
+        </div>
+        <div class="mdc-layout-grid__cell">
+
+          <button class="mdc-button" id="action-generate">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Generate</span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="mdc-layout-grid">
+      <div id="quiz-container" class="mdc-layout-grid__inner"></div>
+    </div>
+
+  </body>
+
+  <footer class="mdc-typography">
+    <div id="quiz-count" style="text-align:center;" class="mdc-typography--subtitle2" >0</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</html>
