@@ -1,6 +1,7 @@
 window.mdc.autoInit();
 
 const pageSize = 50;
+const defaultMin = 0;
 const defaultMax = 32767; // 32 bit int max in C
 
 let count = 0;
@@ -24,18 +25,24 @@ function handleQuizResponse(resp) {
 }
 
 document.querySelector('#action-generate').onclick = function() {
+    const min = document.querySelector('#input-text-min').value;
     const max = document.querySelector('#input-text-max').value;
     const plusEnabled = document.querySelector('#checkbox-plus').checked;
     const minusEnabled = document.querySelector('#checkbox-minus').checked;
 
-    console.log(`max=${max}, plusEnabled=${plusEnabled}, minusEnabled=${minusEnabled}`);
+    console.log(`min=${min}, max=${max}, plusEnabled=${plusEnabled}, minusEnabled=${minusEnabled}`);
 
     var url = "api/quiz?";
 
-    if(max) 
-        url = url + `max=${max}`;
+    if(min) 
+        url = url + `min=${min}`;
     else
-        url = url + `max=${defaultMax}`;
+        url = url + `min=${defaultMin}`;
+
+    if(max) 
+        url = url + `&max=${max}`;
+    else
+        url = url + `&max=${defaultMax}`;
 
     url = url + `&size=${pageSize}`;
 

@@ -63,6 +63,7 @@ private fun Route.serveApi() {
 
 @Location("/quiz")
 data class EquationQuizConfig(
+    val min: Int = 0,
     val max: Int = Integer.MAX_VALUE,
     val size: Int = 50,
     val operators: List<String> = Operator.values().map { it.toString() }

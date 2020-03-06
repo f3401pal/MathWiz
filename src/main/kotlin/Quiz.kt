@@ -53,18 +53,22 @@ object QuizGenerator {
         assert(config.max >= 0) {
             logger.error("invalid input, max=${config.max}")
         }
+        assert(config.max > config.min) {
+            logger.error("invalid input, max must be greater than min")
+        }
         val op = config.operators.map { Operator.valueOf(it) }.pickRandomly()
+        val delta = (config.max - config.min).randomInt()
         val num: FloatArray = when (op) {
             Operator.Plus -> {
-                val sum = config.max.randomInt()
-                val first = sum.randomFloat()
-                val second = sum - first
-                arrayOf(first, second).toFloatArray()
+                val sum = config.min + delta
+                val first = config.min + delta.randomFloat()
+                val second = sum - first + config.min.randomFloat()
+                floatArrayOf(first, second)
             }
             Operator.Minus -> {
-                val first = config.max.randomFloat()
-                val second = first.toInt().randomFloat()
-                arrayOf(first, second).toFloatArray()
+                val first = (config.min + delta).toFloat()
+                val second = config.min.randomFloat() + delta.randomFloat()
+                floatArrayOf(first, second)
             }
             else -> throw RuntimeException("no supported operation, $op")
         }
@@ -76,7 +80,7 @@ object QuizGenerator {
 
 }
 
-private fun List<Operator>.pickRandomly(): Operator = this[(size * Math.random()).toInt()]
+private fun <T> List<T>.pickRandomly(): T = this[(size * Math.random()).toInt()]
 
 private fun Int.randomFloat(): Float = (Math.random() * this).toFloat()
 
